@@ -1,0 +1,12 @@
+[
+  {"question": "how does the session handle redirects", "expected": ["resolve_redirects"]},
+  {"question": "how is basic authentication encoded", "expected": ["_basic_auth_str"]},
+  {"question": "how are cookies merged", "expected": ["merge_cookies"]},
+  {"question": "how does requests decide whether to bypass the proxy", "expected": ["should_bypass_proxies"]},
+  {"question": "how is the response body parsed as json", "expected": ["json"]},
+  {"question": "raise an error when the response has a bad status code", "expected": ["raise_for_status"]},
+  {"question": "how are files encoded for a multipart upload", "expected": ["_encode_files"]},
+  {"question": "how does digest authentication build its header", "expected": ["build_digest_header"]},
+  {"question": "when is the authorization header removed after a redirect", "expected": ["should_strip_auth", "rebuild_auth"]},
+  {"question": "how are SSL certificates verified", "expected": ["cert_verify"]}
+]

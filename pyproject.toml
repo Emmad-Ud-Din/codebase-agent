@@ -1,0 +1,9 @@
+[project]
+name = "codebase-agent"
+version = "0.1.0"
+description = "An AI agent that answers questions about a codebase"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "chromadb",
+]
