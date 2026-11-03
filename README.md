@@ -15,6 +15,9 @@ searches it by meaning.
    returned.
 4. **Evals** (`evaluate.py` + `evals.json`): 10 questions with known answers, scored
    by hit rate @3 (is the right function in the top 3 results?).
+5. **Agent** (`agent.py`): an LLM that uses `search_code` as a tool. A hand-written
+   agent loop runs the searches the model asks for and sends the results back until
+   it gives a final answer, citing each function as `file:line`.
 
 ## Results
 
@@ -32,4 +35,16 @@ git clone --depth 1 https://github.com/psf/requests.git repos/requests
 uv run build_index.py
 uv run search.py how are cookies merged
 uv run evaluate.py
+```
+
+The agent needs an Anthropic API key. Put it in a `.env` file (already in `.gitignore`):
+
+```
+ANTHROPIC_API_KEY=your-key-here
+```
+
+Then ask a question:
+
+```bash
+uv run --env-file .env agent.py how does the session handle redirects
 ```
