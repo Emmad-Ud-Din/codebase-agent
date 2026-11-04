@@ -8,5 +8,10 @@
   {"question": "how are files encoded for a multipart upload", "expected": ["_encode_files"]},
   {"question": "how does digest authentication build its header", "expected": ["build_digest_header"]},
   {"question": "when is the authorization header removed after a redirect", "expected": ["should_strip_auth", "rebuild_auth"]},
-  {"question": "how are SSL certificates verified", "expected": ["cert_verify"]}
+  {"question": "how are SSL certificates verified", "expected": ["cert_verify"]},
+  {"question": "how does a session choose which adapter to use for a url", "expected": ["get_adapter"]},
+  {"question": "how is the length of a request body measured", "expected": ["super_len"]},
+  {"question": "how are proxy settings read from environment variables", "expected": ["get_environ_proxies", "merge_environment_settings"]},
+  {"question": "how are the username and password extracted from a url", "expected": ["get_auth_from_url"]},
+  {"question": "how is the text encoding of a response guessed", "expected": ["apparent_encoding", "get_encoding_from_headers"]}
 ]

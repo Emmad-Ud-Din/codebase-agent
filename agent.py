@@ -4,6 +4,7 @@ import anthropic
 import chromadb
 
 from config import COLLECTION_NAME, DB_PATH
+from hybrid import hybrid_search
 
 MODEL = "claude-opus-5-5"
 
@@ -41,9 +42,18 @@ collection = chromadb.PersistentClient(path=DB_PATH).get_collection(
 
 
 def search_code(query: str) -> str:
-    results = collection.query(query_texts=[query], n_results=5)
+    ids = hybrid_search(query, 5)
+    results = collection.get(ids=ids, include=["documents", "metadatas"])
+    chunks = {
+        chunk_id: (meta, document)
+        for chunk_id, meta, document in zip(
+            results["ids"], results["metadatas"], results["documents"]
+        )
+    }
+
     parts = []
-    for meta, document in zip(results["metadatas"][0], results["documents"][0]):
+    for chunk_id in ids:
+        meta, document = chunks[chunk_id]
         parts.append(f"--- {meta['file']}:{meta['start_line']} ---\n{document}")
     return "\n\n".join(parts)
 
